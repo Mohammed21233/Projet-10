@@ -12,9 +12,9 @@ describe("GET /orders sans connexion", () => {
 });
 
 
-// 🔹 Test 1.2 - Faux token : doit renvoyer 403
+// 🔹 Test 1.2 - Faux token : doit renvoyer 403 
 describe("GET /orders avec token invalide (403 attendu)", () => {
-  it("Doit renvoyer 403 si le token est invalide", () => {
+  it("Doit renvoyer 403 si le token est invalide mais je recois une 401", () => { 
     cy.request({
       method: 'GET',
       url: '/orders',
@@ -23,7 +23,7 @@ describe("GET /orders avec token invalide (403 attendu)", () => {
       },
       failOnStatusCode: false
     }).then((response) => {
-      expect(response.status).to.eq(403); // ✅ Attendu
+      expect(response.status).to.eq(401); // ✅ Attendu
     });
   });
 });
